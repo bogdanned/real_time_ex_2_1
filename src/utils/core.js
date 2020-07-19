@@ -1,14 +1,23 @@
+const {promisify} = require("util");
+const setTimeoutPromise = promisify(setTimeout)
+
 function fibo(n) {
     if (n < 2) return 1;
     else return fibo(n - 2) + fibo(n - 1);
 }
 
-function expensiveTaskList(n, callback) {
+async function timer(n){
+    await setTimeoutPromise(n * 500)
+}
+
+async function expensiveTaskList(n, callback) {
     var result = []
     for (let i = 0; i < n; i++) {
-        const fiboNumber = fibo(i);
+        const fiboNumber = fibo(n);
+
         if (callback) {
-            callback(n, i, fiboNumber);
+            await callback(n, i, fiboNumber);
+            await timer(1);
         }
         result.push(fiboNumber);
     }

@@ -1,21 +1,20 @@
-import { RedisPubSub } from 'graphql-redis-subscriptions';
-import * as Redis from 'ioredis';
+const { RedisPubSub } = require('graphql-redis-subscriptions');
+const redis = require("redis");
 
 const options = {
-    host: 'eu1-native-anchovy-30330.lambda.store',
-    port: '30330',
-    password: 'e5716cdccb2f4fac9a4b8d66365284a2',
-    retryStrategy: times => {
-        // reconnect after
-        return Math.min(times * 50, 2000);
-    }
+    host: 'SG-realtimegraphql-36458',
+    port: '6379',
+    password: '4HeE9Vf1J03SSJo0ksNAd7wsMm7SCDsE'
 };
 
+const subscriber = redis.createClient();
 
+const publisher = redis.createClient();
+ 
 
 const pubsub = new RedisPubSub({
-    publisher: new Redis(options),
-    subscriber: new Redis(options)
+    publisher,
+    subscriber
 });
 
 
