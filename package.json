@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/bogdanned/real_time_ex_2_1#readme",
   "dependencies": {
-    "apollo-server": "^2.16.0",
+    "apollo-server": "^2.25.3",
     "apollo-server-express": "^2.16.0",
     "express": "^4.17.1",
     "graphql-redis-subscriptions": "^2.2.1",
